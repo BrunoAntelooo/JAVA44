@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #ff9800;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+.search-container input {
+    padding: 0.5em;
+    font-size: 1em;
+    border: 2px solid #ff9800;
+    border-radius: 5px;
+    outline: none;
+    margin-right: 0.5em;
+}
+
+.search-container button {
+    padding: 0.5em 1em;
+    background-color: #ff9800;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+main {
+    padding: 1em;
+}
+
+#productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.producto {
+    border: 2px solid #ff9800;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 1em;
+    text-align: center;
+    flex: 1 0 30%;
+    max-width: 30%;
+    background-color: #fff;
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 2px solid #ff9800;
+    margin-bottom: 1em;
+}
+
+button {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #e68900;
+}
+
+#carrito {
+    border: 2px solid #ff9800;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 1em;
+    text-align: center;
+    background-color: #fff;
+}
+
+#carrito ul {
+    list-style: none;
+    padding: 0;
+}
+
+#carrito li {
+    margin: 0.5em 0;
+    background-color: #ffccbc;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #ff9800;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+#emptyMessage {
+    text-align: center;
+    color: #333;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .producto {
+        flex: 1 0 45%;
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .producto {
+        flex: 1 0 100%;
+        max-width: 100%;
+    }
+}

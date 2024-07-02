@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrodomesticos</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script>src="../main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Electrodomésticos</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar productos...">
+            <button onclick="buscarProducto()">Buscar</button>
+        </div>
+    </header>
+    
+    <main>
+        <section id="productos">
+            <!-- Productos existentes -->
+            <div class="producto" data-name="Heladera">
+                <img src="/heladera java.png" alt="Heladera">
+                <h2>Heladera</h2>
+                <p>Precio: $500</p>
+                <button onclick="agregarAlCarrito('Heladera', 500)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Lavadora">
+                <img src="/platos.png" alt="Lavadora">
+                <h2>Lavadora</h2>
+                <p>Precio: $300</p>
+                <button onclick="agregarAlCarrito('Lavadora', 300)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Microondas">
+                <img src="/micro 2.png" alt="Microondas">
+                <h2>Microondas</h2>
+                <p>Precio: $100</p>
+                <button onclick="agregarAlCarrito('Microondas', 100)">Agregar al Carrito</button>
+            </div>
+            <!-- Nuevos productos -->
+            <div class="producto" data-name="Tostadora">
+                <img src="/tostadora 2.png" alt="Tostadora">
+                <h2>Tostadora</h2>
+                <p>Precio: $50</p>
+                <button onclick="agregarAlCarrito('Tostadora', 50)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Licuadora">
+                <img src="/licuadora2.png" alt="Licuadora">
+                <h2>Licuadora</h2>
+                <p>Precio: $70</p>
+                <button onclick="agregarAlCarrito('Licuadora', 70)">Agregar al Carrito</button>
+            </div>
+        </section>
+
+        <section id="carrito">
+            <h2>Carrito de Compras</h2>
+            <ul id="carrito-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+        </section>
+
+        <p id="emptyMessage">La lista está vacía.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Compra y Venta de Electrodomésticos</p>
+    </footer>
+
+    <script src="./JS/main.js"></script>
+</body>
+</html>
