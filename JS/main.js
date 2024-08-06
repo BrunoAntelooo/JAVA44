@@ -1,5 +1,19 @@
 let carrito = [];
 
+// Función para guardar el carrito en localStorage
+function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+// Función para cargar el carrito desde localStorage
+function cargarCarrito() {
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+        actualizarCarrito();
+    }
+}
+
 function agregarAlCarrito(producto, precio) {
     const item = carrito.find(item => item.nombre === producto);
     if (item) {
@@ -7,6 +21,7 @@ function agregarAlCarrito(producto, precio) {
     } else {
         carrito.push({ nombre: producto, precio: precio, cantidad: 1 });
     }
+    guardarCarrito();
     actualizarCarrito();
 }
 
@@ -40,12 +55,14 @@ function quitarDelCarrito(producto) {
         } else {
             carrito.splice(index, 1);
         }
+        guardarCarrito();
+        actualizarCarrito();
     }
-    actualizarCarrito();
 }
 
 function vaciarCarrito() {
     carrito = [];
+    guardarCarrito();
     actualizarCarrito();
 }
 
@@ -75,15 +92,6 @@ function addHoverEffect() {
     });
 }
 
-function addClickAlert() {
-    const listItems = document.querySelectorAll('#productos .producto');
-    listItems.forEach(item => {
-        item.addEventListener('click', () => {
-            alert(`Has hecho clic en: ${item.querySelector('h2').textContent}`);
-        });
-    });
-}
-
 function addDoubleClickEffect() {
     const listItems = document.querySelectorAll('#carrito-items li');
     listItems.forEach(item => {
@@ -104,9 +112,14 @@ function checkEmptyList() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    cargarCarrito();
     addHoverEffect();
-    addClickAlert();
     addDoubleClickEffect();
+
+    // Elementos para mostrar mensajes al usuario
+    const messageContainer = document.createElement('div');
+    messageContainer.id = 'message-container';
+    document.body.appendChild(messageContainer);
 
     // Creación de los botones con sus respectivas funcionalidades
     const addButton = document.createElement('button');
@@ -140,7 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!itemFound) {
-                alert('Ítem no encontrado.');
+                const message = document.createElement('p');
+                message.textContent = 'Ítem no encontrado.';
+                message.style.color = 'red';
+                messageContainer.innerHTML = '';
+                messageContainer.appendChild(message);
             }
             actualizarCarrito();
         }
@@ -156,7 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
     countButton.style.margin = '1em';
     countButton.addEventListener('click', () => {
         const items = document.querySelectorAll('#carrito-items li');
-        alert(`Número total de ítems: ${items.length}`);
+        const message = document.createElement('p');
+        message.textContent = `Número total de ítems: ${items.length}`;
+        message.style.color = 'green';
+        messageContainer.innerHTML = '';
+        messageContainer.appendChild(message);
     });
 
     const displayButton = document.createElement('button');
@@ -168,11 +189,16 @@ document.addEventListener('DOMContentLoaded', () => {
         items.forEach(item => {
             allItems.push(item.textContent);
         });
+        const message = document.createElement('p');
         if (allItems.length > 0) {
-            alert(`Lista de todos los ítems:\n${allItems.join('\n')}`);
+            message.textContent = `Lista de todos los ítems:\n${allItems.join('\n')}`;
+            message.style.color = 'blue';
         } else {
-            alert('La lista está vacía.');
+            message.textContent = 'La lista está vacía.';
+            message.style.color = 'red';
         }
+        messageContainer.innerHTML = '';
+        messageContainer.appendChild(message);
     });
 
     // Inserción de los botones antes del footer

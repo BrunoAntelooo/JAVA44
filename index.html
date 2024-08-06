@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrodomésticos</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="JS/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Electrodomésticos</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar productos...">
+            <button onclick="buscarProducto()">Buscar</button>
+        </div>
+    </header>
+    
+    <main>
+        <section id="productos">
+            <!-- Productos existentes -->
+            <div class="producto" data-name="Heladera">
+                <img src="heladera java.png" alt="Heladera">
+                <h2>Heladera</h2>
+                <p>Precio: $500</p>
+                <button onclick="agregarAlCarrito('Heladera', 500)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Lavadora">
+                <img src="platos.png" alt="Lavadora">
+                <h2>Lavadora</h2>
+                <p>Precio: $300</p>
+                <button onclick="agregarAlCarrito('Lavadora', 300)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Microondas">
+                <img src="micro 2.png" alt="Microondas">
+                <h2>Microondas</h2>
+                <p>Precio: $100</p>
+                <button onclick="agregarAlCarrito('Microondas', 100)">Agregar al Carrito</button>
+            </div>
+            <!-- Nuevos productos -->
+            <div class="producto" data-name="Tostadora">
+                <img src="tostadora 2.png" alt="Tostadora">
+                <h2>Tostadora</h2>
+                <p>Precio: $50</p>
+                <button onclick="agregarAlCarrito('Tostadora', 50)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Licuadora">
+                <img src="licuadora2.png" alt="Licuadora">
+                <h2>Licuadora</h2>
+                <p>Precio: $70</p>
+                <button onclick="agregarAlCarrito('Licuadora', 70)">Agregar al Carrito</button>
+            </div>
+        </section>
+
+        <section id="carrito">
+            <h2>Carrito de Compras</h2>
+            <ul id="carrito-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+        </section>
+
+        <p id="emptyMessage">La lista está vacía.</p>
+
+        <!-- Sección del Workshop -->
+        <section id="workshop">
+            <h2>Workshop: Nuevos Electrodomésticos</h2>
+            <div class="producto" data-name="Plancha">
+                <img src="plancha.png" alt="Plancha">
+                <h2>Plancha</h2>
+                <p>Precio: $40</p>
+                <button onclick="agregarAlCarrito('Plancha', 40)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Extractor">
+                <img src="extractor.png" alt="Extractor">
+                <h2>Extractor</h2>
+                <p>Precio: $90</p>
+                <button onclick="agregarAlCarrito('Extractor', 90)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Hervidor">
+                <img src="hervidor.png" alt="Hervidor">
+                <h2>Hervidor</h2>
+                <p>Precio: $60</p>
+                <button onclick="agregarAlCarrito('Hervidor', 60)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Batidora">
+                <img src="batidora.png" alt="Batidora">
+                <h2>Batidora</h2>
+                <p>Precio: $80</p>
+                <button onclick="agregarAlCarrito('Batidora', 80)">Agregar al Carrito</button>
+            </div>
+            <!-- Nuevos productos añadidos -->
+            <div class="producto" data-name="Cafetera">
+                <img src="cafetera.png" alt="Cafetera">
+                <h2>Cafetera</h2>
+                <p>Precio: $70</p>
+                <button onclick="agregarAlCarrito('Cafetera', 70)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Secadora">
+                <img src="secadora2.png" alt="Secadora">
+                <h2>Secadora</h2>
+                <p>Precio: $150</p>
+                <button onclick="agregarAlCarrito('Secadora', 150)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Cocina">
+                <img src="cocina.png" alt="Cocina">
+                <h2>Cocina</h2>
+                <p>Precio: $400</p>
+                <button onclick="agregarAlCarrito('Cocina', 400)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Deshumidificador">
+                <img src="deshumidificador.png" alt="Deshumidificador">
+                <h2>Deshumidificador</h2>
+                <p>Precio: $120</p>
+                <button onclick="agregarAlCarrito('Deshumidificador', 120)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Purificador">
+                <img src="purificador.png" alt="Purificador">
+                <h2>Purificador</h2>
+                <p>Precio: $85</p>
+                <button onclick="agregarAlCarrito('Purificador', 85)">Agregar al Carrito</button>
+            </div>
+            <div class="producto" data-name="Ventilador">
+                <img src="ventilador.png" alt="Ventilador">
+                <h2>Ventilador</h2>
+                <p>Precio: $55</p>
+                <button onclick="agregarAlCarrito('Ventilador', 55)">Agregar al Carrito</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Compra y Venta de Electrodomésticos</p>
+    </footer>
+
+    <script src="JS/main.js" defer></script>
+</body>
+</html>
